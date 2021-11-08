@@ -13,6 +13,7 @@ public class Ruleta{
     public static int playerColor[] = new int[playerCount];
     public static int playerBets[] = new int[playerCount];
     public static int playerMoney[] = new int[playerCount];
+    public static int playerBet = 0;
 
     public static int aiColor[] = new int[aiCount];
     public static int aiBets[] = new int[aiCount];
@@ -179,18 +180,19 @@ public class Ruleta{
 
     public static void playerBet(int i){
         System.out.println("Hráči " + (i+1) + " prosím kolik chceš vsadit. (1 - " + playerMoney[i] + ")");
-        int bet = scan.nextInt();
-        if(bet<1){
+        playerBet = scan.nextInt();
+
+        if(playerBet<1){
             System.out.println("Prosím vsaď více jak 1.");
             playerBet(i);
         }
 
-        if(bet>playerMoney[i]){
+        if(playerBet>playerMoney[i]){
             System.out.println("Tolik nemáš!");
             playerBet(i);
         }
 
-        playerBets[i] = bet;
+        playerBets[i] = playerBet;
     }
 
     public static void aiChoice(int i){
